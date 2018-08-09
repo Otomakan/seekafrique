@@ -1,0 +1,39 @@
+.main-container{
+	margin-left: auto;
+    margin-right: auto;
+    margin-top: 56px;
+} 
+
+
+.form-container{
+	.text-field{
+		margin-left: 20px;
+    	margin-right: 20px;
+    	width: 200px,
+	}
+}
+
+
+// const styles = theme =>({
+//     mainContainer:{
+//       marginLeft: "auto",
+//       marginRight: "auto",
+//       marginTop: 56,
+//       backgroundColor: 'red',
+//       // display: "-ms-grid", 
+//       // display: "grid",
+//       // gridTemplateAreas: 'head head''sidebar main',
+//       // gridTemplateRows: '10% 1fr',
+//       // gridTemplateColumns: '20% 1fr', 
+//       // gridRowGaps: 0,
+//       // gridColumnGaps: 0, 
+//     },
+//     '@media (min-width:0px) and (orientation: landscape)': {
+//       mainContainer:{
+//       marginTop: 48
+//       }
+//     },
+//     '@media (min-width:600px)':{
+//       marginTop:64
+//     }
+// })

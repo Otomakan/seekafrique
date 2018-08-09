@@ -1,0 +1,18 @@
+used mongoimport --db seekafrique_development --collection countries --file countries.csv --type csv  --headerline
+ to get countries by name
+
+Figured out the general db structure, should be fast from now on. 
+
+Found list of universities, industries, majors
+
+EKPEMI TO DO: List of degree titles, regions, main cities
+
+In education I create two fields for instituion institution, and tempeducation. One is inst_id, the other one allows a string. IN the react this means that the Post will have to be different depending on list choose or not.
+
+Put a userInfo in userprofile
+
+Must think about how to validate presence, and for instituoon must have at least one field validated between string and inst list
+
+to query embedded objects:  User.find_by('userProfile.personalInfo.firstName':'jack')
+
+for the personal info forms pleas check that you have some some server query to tell what has been done, so users don't send the same stuff twice. 
