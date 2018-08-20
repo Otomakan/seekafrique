@@ -1,11 +1,13 @@
 import React, {Component} from 'react'
 import {Route, Switch} from 'react-router-dom'
-import SignUp from './SignUp/SignUp.js'
-import LogIn from './LogIn/LogIn.js'
-import Home from './Home/Home.js'
+import SignUp from './UserLoggedOut/SignUp/SignUp.js'
+import LogIn from './UserLoggedOut/LogIn/LogIn.js'
+import Home from './UserLoggedOut/Home/Home.js'
 import NoMatch from './NoMatch.js'
 import LoadingBar from '../../components/LoadingBar'
 import {connect} from 'react-redux'
+import CompanyLogin from './CompanyLoggedOut/LogIn/LogIn.js'
+import CompanySignUp from './CompanyLoggedOut/SignUp/SignUp.js'
 
 class LoggedOutRouteFrame extends Component {
 	render(){
@@ -16,6 +18,8 @@ class LoggedOutRouteFrame extends Component {
 				<Route exact path="/" component={Home} />
 		        <Route path="/signup" component={SignUp} />
 		        <Route path="/login" component={LogIn} />
+		        <Route path="/company/login" component={CompanyLogin}/>
+		        <Route path="/company/signup" component={CompanySignUp}/>
 		   		<Route component={NoMatch}/>
 	        </Switch>
 			)

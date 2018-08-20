@@ -1,18 +1,26 @@
 import {signupConstants} from '../actions/signUpActions.js'
-
-function signup(state={loggedIn:false}, action){
+export default signup
+function signup(state={loggedIn:false, signUpErrors:[]}, action){
 	switch(action.type){
 		case signupConstants.SIGNUP_REQUEST:
 			return{
-				isLoading:true
+				isLoading:true,
+
 			}
 		case signupConstants.SIGNUP_SUCCESS:
 			return{
-				signedUp:true
+				isLoading:false,
+				signedUp:true,
+				signUpErrors:[],
 			}
 		case signupConstants.SIGNUP_FAIL:
 			return{
-				signedUp:false
+				isLoading:false,
+				signedUp:false,
+				signUpErrors: action.errors,
 			}
+		default:
+		return {...state}
 	}
+
 }

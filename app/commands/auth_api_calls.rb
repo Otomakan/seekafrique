@@ -16,12 +16,21 @@ class AuthApiCalls
 
 	def user
 		if decoded_token
-			authed_user = User.find(decoded_token["user_id"]["$oid"]) 
-			if authed_user
-				@user = authed_user
-			else
-				@user = errors.add(:token, "invalid token")
-			end
+			if decoded_token["user_id"]
+				authed_user = User.find(decoded_token["user_id"]["$oid"]) 
+				if authed_user
+					@user = authed_user
+				else
+					@user = errors.add(:token, "invalid token")
+				end
+			elsif decoded_token["company_id"]
+				authed_user = Company.find(decoded_token["company_id"]["$oid"]) 
+				if authed_user
+					@user = authed_user
+				else
+					@user = errors.add(:token, "invalid token")
+				end
+			end		
 		else
 			@user || errors.add(:token, "invalid token") && nil
 		end

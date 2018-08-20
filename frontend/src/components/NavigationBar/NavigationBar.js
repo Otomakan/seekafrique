@@ -26,7 +26,6 @@ class NavigationBar extends Component {
     this.handleMenu = this.handleMenu.bind(this)
     this.handleClose = this.handleClose.bind(this)
     this.logout = this.logout.bind(this)
-    console.log(props)
 	}
 
   handleMenu (e) {
@@ -80,8 +79,8 @@ class NavigationBar extends Component {
                   open={open}
                   onClose={this.handleClose}
                 >
-                  <MenuItem onClick={this.handleClose}>Profile</MenuItem>
-                  <MenuItem onClick={this.handleClose}>My account</MenuItem>
+                  <MenuItem onClick={this.handleClose}><Link to="/buildprofile">Build Profile</Link></MenuItem>
+                  <MenuItem onClick={this.handleClose}><Link to="/userprofile">My account</Link></MenuItem>
                   <MenuItem onClick={this.logout}> <Link to="/">Log Out </Link></MenuItem>
                 </Menu>
               </div>

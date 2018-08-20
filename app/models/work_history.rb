@@ -5,4 +5,5 @@ class WorkHistory
   field :startDate, type: Date
   field :endDate, type: Date
   field :companyWebsite, type: String
+  embedded_in :userProfile
 end

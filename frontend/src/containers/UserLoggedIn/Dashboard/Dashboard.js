@@ -3,11 +3,9 @@ import {connect} from 'react-redux'
 import React from 'react'
 
 
-function mapDispatchToProps(dispatch, ownProps){
-	
-}
+
 function mapStateToProps(state, ownProps){
 	return state
 }
- const Dashboard = connect(mapStateToProps, mapDispatchToProps)(DashboardComponent)
+ const Dashboard = connect(mapStateToProps)(DashboardComponent)
 export default Dashboard

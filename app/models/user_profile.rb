@@ -1,8 +1,9 @@
 class UserProfile
   include Mongoid::Document
-  embeds_one :personalInfo
-  embeds_many :education
-  embeds_many :workHistory
-  embeds_many :tempApplication
-  has_many :application
+  embeds_one :personalInfo, autobuild: true
+  embeds_many :educations
+  embeds_many :workHistorys
+  embeds_many :tempApplications
+  has_many :applications
+  embedded_in :user
 end

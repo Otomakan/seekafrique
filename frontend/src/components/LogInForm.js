@@ -17,8 +17,7 @@ constructor(props) {
 	  	errors:[],
 	  }
 	  this.handleInputChange = this.handleInputChange.bind(this)
-	  console.log("In the Login page")
-	  console.log(props)
+
 	}
 
 	handleInputChange(e){

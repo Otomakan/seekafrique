@@ -16,3 +16,54 @@ Must think about how to validate presence, and for instituoon must have at least
 to query embedded objects:  User.find_by('userProfile.personalInfo.firstName':'jack')
 
 for the personal info forms pleas check that you have some some server query to tell what has been done, so users don't send the same stuff twice. 
+
+make the errors more constitant accross the app, for handling in the react side but also, the format that is sent, probably better to convert the hashes into JSO format before sending them out. 
+
+Make a dispatch when submit new first name , so that on change it will update the Welcome {name } component
+
+In the PUSER controller fix the error hangling of createpinfo.
+
+Check the token validation error handling got tis :
+10:04:10 rails.1     | Completed 500 Internal Server Error in 6ms
+10:04:10 rails.1     | 
+10:04:10 rails.1     | 
+10:04:10 rails.1     |   
+10:04:10 rails.1     | NoMethodError (undefined method `errors' for nil:NilClass):
+10:04:10 rails.1     |   
+10:04:10 rails.1     | app/controllers/auth_controller.rb:25:in `checktoken'
+10:04:16 rails.1     | Started POST "/authenticate" for ::1 at 2018-08-13 10:04:16 -0500
+
+Think about ways to control work history so you don't get ouble entries, the problem is that I don't know what I can use as controls, appart from checking for overlapping dates and 
+
+Change the date pickers in Edu and WorkH
+
+when looking at the profile, if an element is missing create a "not available" notice
+
+Create a 404 page for loggedinroute
+
+At the buld Profile make an api call, and if we see that the profile was already built, mak a little warning message, or even redirect
+
+Do some research of elastic search v normal search provided with Mongoid
+
+Implement a onPress enter event for login or other submitting stuff
+
+
+Check for redundant data in different redux reducers
+
+Change the personal info in build profile so that it works directly on data in the redux store
+
+dont forget to put the embedded in relations to update everything!!!
+
+don't forget the cors setup is in initializers/cors.rb
+
+Reorganize the container folder according to the routes, especially creating a UserLoggedOut folder
+
+IN the auth reducer add a 'userType'
+
+Created a new API for company sign in.
+
+Have some labels for industries and stuff like that
+
+Might want to reorganize the actions and reducers maybe create a user and a company profile
+
+maybe but the userActions and signup together

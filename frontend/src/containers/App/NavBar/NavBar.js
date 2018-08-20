@@ -1,12 +1,11 @@
 // import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import NavigationBar from '../../../components/NavigationBar/NavigationBar.js'
-import userActions from '../../../actions/userActions.js'
+import authActions from '../../../actions/authActions.js'
 import navBarActions from '../../../actions/NavBarActions.js'
 
 
 function mapStateToProps(state, ownProps) {
-	console.log(state)
     return (
     {
     	loggedIn: ownProps.loggedIn,
@@ -17,7 +16,7 @@ function mapStateToProps(state, ownProps) {
 function mapDispatchToProps(dispatch, ownProps){
 	return({
 		logout:()=>{
-			dispatch(userActions.logout())
+			dispatch(authActions.logout())
 		},
 		toggleMenu:()=>{
 			dispatch(navBarActions.toggleMenu())

@@ -1,8 +1,8 @@
 
 
 import {connect} from 'react-redux'
-import userActions from '../../../actions/userActions.js'
-import LogInFormComponent from '../../../components/LogInForm.js'
+import authActions from '../../../../actions/authActions.js'
+import LogInFormComponent from '../../../../components/LogInForm.js'
 
 
 
@@ -13,7 +13,7 @@ function mapStateToProps(state){
 
 const  mapDispatchToProps =(dispatch)=>({
 		authenticate:(name, password)=>{
-			dispatch(userActions.login(name, password))
+			dispatch(authActions.login('users',name, password))
 		},
 })
 
