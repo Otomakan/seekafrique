@@ -23,18 +23,15 @@ class AppFrame extends Component {
       console.log("History in the making")
       this.forceUpdate()
       })
-    const {dispatch} = this.props
-    dispatch(authActions.checktoken())
-    console.log("Logged in is set to")
-    console.log(props)
+    props.checkToken()
   }
 
 
   render() {
-    const {loggedIn, user_type} = this.props.authReducer
+    const {loggedIn, user_type} = this.props
     return(
       <div className="App">
-       <NavigationBar loggedIn={loggedIn}/>
+       <NavigationBar user_type={user_type} loggedIn={loggedIn}/>
           <div className="main-container">
         <MuiPickersUtilsProvider utils={DateFnsUtils}>
          <Switch>
@@ -55,12 +52,18 @@ class AppFrame extends Component {
 //This object redirects the user to the login route if the loggedin redux object is set to true and inversely to the logout route
 // const WhichRoute = (props) =>
 
-
+function mapDispatchToProps(dispatch){
+  return{
+    checkToken:()=>{
+      dispatch(authActions.checktoken())
+    }
+  }
+}
 
 function mapStateToProps(state) {
-    return state
+    return state.authReducer
 
 }
 
-const App = withRouter(connect(mapStateToProps)(AppFrame))
+const App = withRouter(connect(mapStateToProps, mapDispatchToProps)(AppFrame))
 export default App

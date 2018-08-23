@@ -67,3 +67,16 @@ Have some labels for industries and stuff like that
 Might want to reorganize the actions and reducers maybe create a user and a company profile
 
 maybe but the userActions and signup together
+
+Maybe have a little cover letter field 
+
+For the menus and stuff make sure to rewrap the elementsmin the <Link> tags which are no inside, so bit wonky
+
+Mongoid::Errors::MixedRelations (
+message:
+  Referencing a(n) UserProfile document from the JobPost document via a relational association is not allowed since the UserProfile is embedded.
+  So we have to majke a new has_many reference with the User id
+
+ For the application user models think a little bit deeper
+
+ There needsd to be a bit of reorganizing in the controllers. For instance maybe create a CompanyAPICallController so that all the Compay api calls go through the same check filtes and we don't ave to rewrite same code everytime

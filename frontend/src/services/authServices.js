@@ -43,6 +43,7 @@ function login(user_type, email, password) {
 }
 
 function logout(){
+	console.log('removing tokens')
 	cookies.remove('JWT_Token_Dic','/')
 	cookies.remove('JWT_Token_Dic','/company')
 }

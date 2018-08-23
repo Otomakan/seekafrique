@@ -45,11 +45,11 @@ end
   def companyauthenticate
       command = AuthCompany.call(company_params[:email], company_params[:password])
       if command.success?
-           @current_company = User.find_by('email':company_params[:email])
-        if  @current_user['companyName']
-          render json: { auth_token: command.result, name: @current_company.companyName, user_type: 'user'}, status: 200
+           @current_company = Company.find_by('email': company_params[:email])
+        if  @current_company['companyName']
+          render json: { auth_token: command.result, name: @current_company.companyName, user_type: 'company'}, status: 200
         else
-          render json:{auth_token: command.result,message: 'identified! But no name yet!',user_type: 'user'}, status: 200
+          render json:{auth_token: command.result,message: 'identified! But no name yet!',user_type: 'company'}, status: 200
         end
       else
         render json: { error: command.errors }, status: :unauthorized
@@ -60,6 +60,6 @@ end
       params.permit(:email, :password)
     end
   def company_params
-      params.permit(:email, :password)
+      params.require(:auth).permit(:email, :password)
   end
   end

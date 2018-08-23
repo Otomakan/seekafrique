@@ -13,5 +13,7 @@ Rails.application.routes.draw do
   post 'companys/authenticate', to: 'auth#companyauthenticate'
   post 'companys/checktoken', to: 'auth#companychecktoken'
   post 'companyprofile/binfo', to: 'companys_profiles#createcompanyprofile'
-  get 'companyprofile', to: 'company_profiles#show'	
+  get 'companyprofile', to: 'companys_profiles#show'
+  post 'company/jobpost/create', to: 'job_posts#createpost'	
+  get 'company/jobpost/getall', to: 'job_posts#showallownposts'
 end

@@ -7,8 +7,9 @@ import LoadingBar from '../../components/LoadingBar.js'
 import { withRouter } from 'react-router-dom'
 import DashBoard from './Dashboard/Dashboard.js'
 import BuildProfile from './BuildProfile/BuildProfile.js'
-import ShowProfile from './UserProfile/ShowProfile.js'
-
+import ShowProfile from './CompanyProfile/ShowProfile.js'
+import CreateJobPost from './JobPosts/Create'
+import ShowOwnJobPosts from './JobPosts/ShowOwn'
 
 class CompanyLoggedInRouteComponent extends Component {
 	constructor(props) {
@@ -32,6 +33,9 @@ class CompanyLoggedInRouteComponent extends Component {
 				
 				<Route exact path='/buildprofile' component={BuildProfile}/>
 				<Route exact path='/companyprofile' component={ShowProfile}/>
+				<Route exact path='/company/jobposts/create' component={CreateJobPost}/>
+				<Route exact path='/company/jobposts/showall' component={ShowOwnJobPosts}/>
+				
 				</Switch>
 			<Button onClick={this.logOut}> <Link to="/">LOGOUT </Link></Button>
 			

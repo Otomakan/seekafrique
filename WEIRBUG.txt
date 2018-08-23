@@ -1,0 +1,1 @@
+there is a weird bug in frontend/containers/companyloggedin/loggedinroute where show profile is being fetch from an child folder of an adjacent folder to the parent folder (Show profile/userprofile)

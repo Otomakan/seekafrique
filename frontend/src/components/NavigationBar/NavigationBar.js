@@ -12,6 +12,9 @@ import Menu from '@material-ui/core/Menu'
 import {Link} from 'react-router-dom'
 import propTypes from 'prop-types'
 import SideMenu from './SideMenu'
+import LoggedOutNavBar from './LoggedOut'
+import UserLoggedInNavBar from './UserLoggedIn'
+import CompanyLoggedInNavBar from './CompanyLoggedIn'
 
 class NavigationBar extends Component {
 
@@ -29,6 +32,7 @@ class NavigationBar extends Component {
 	}
 
   handleMenu (e) {
+    console.log(e)
     this.setState({ anchorEl: e.currentTarget })
   }
 
@@ -43,48 +47,34 @@ class NavigationBar extends Component {
 
 	render(){
 		const { anchorEl } = this.state
-    const { loggedIn } = this.props
+    const { loggedIn, user_type } = this.props
 		const open = Boolean(anchorEl)
 		return(
     <div className="main-menu">
 		<AppBar>
 			<Toolbar>
-			<IconButton color="inherit" aria-label="Menu">
-              <MenuIcon onClick={this.props.toggleMenu}/>
+			<IconButton onClick={this.props.toggleMenu} color="inherit" aria-label="Menu">
+              <MenuIcon />
             </IconButton>
              <Typography variant="title" color="inherit" >
               {this.state.title}
             </Typography>
-            {loggedIn && (
-              <div>
-                <IconButton
-                  aria-owns={open ? 'menu-appbar' : null}
-                  aria-haspopup="true"
-                  onClick={this.handleMenu}
-                  color="inherit"
-                >
-                  <AccountCircle />
-                </IconButton>
-                <Menu
-                  id="menu-appbar"
-                  anchorEl={anchorEl}
-                  anchorOrigin={{
-                    vertical: 'top',
-                    horizontal: 'right',
-                  }}
-                  transformOrigin={{
-                    vertical: 'top',
-                    horizontal: 'right',
-                  }}
-                  open={open}
-                  onClose={this.handleClose}
-                >
-                  <MenuItem onClick={this.handleClose}><Link to="/buildprofile">Build Profile</Link></MenuItem>
-                  <MenuItem onClick={this.handleClose}><Link to="/userprofile">My account</Link></MenuItem>
-                  <MenuItem onClick={this.logout}> <Link to="/">Log Out </Link></MenuItem>
-                </Menu>
-              </div>
-            )}
+            {loggedIn 
+              ? user_type ==='company'
+               ?<CompanyLoggedInNavBar
+                 handleClose={()=>{this.handleClose()}}
+                 handleMenu={(e)=>{this.handleMenu(e)}}
+                 logout={()=>{this.logout()}}
+                 open={open} anchorEl={anchorEl}/>
+              :
+               <UserLoggedInNavBar 
+                  handleClose={()=>{this.handleClose()}}
+                  handleMenu={(e)=>{this.handleMenu(e)}}
+                  logout={()=>{this.logout()}}
+                  open={open} anchorEl={anchorEl}/>
+
+              : <p>LoggedOut</p>
+            }
 			</Toolbar>
 		</AppBar>
 

@@ -16,15 +16,15 @@ export default class ShowProfile extends Component {
 		let {toSee}=this.state
 		return(
 			<div>
-			<Errors loginErrors={this.props.errors}/>
 			<h1>COMPANY PROFILE</h1>
 			
 			<Card>
 			<List>
-				<ListItem button>First Name {this.props.companyProfile.companyName}</ListItem>
-				<ListItem button>Last Name {this.props.companyProfile.website}</ListItem>
-				<ListItem button>Phone Number {this.props.companyProfile.description}</ListItem>
+				<ListItem button>Company Name: {this.props.companyProfile.companyName}</ListItem>
+				<ListItem button>Website: {this.props.companyProfile.website}</ListItem>
+				<ListItem button>Description {this.props.companyProfile.description}</ListItem>
 				<br/>
+			</List> 
 			</Card>
 			</div>
 			)

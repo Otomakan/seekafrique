@@ -4,7 +4,7 @@ export default function(state={
 	basicInfo:{
 		companyName:"",
 	  	description:"",
-	  	phoneNumber: "",
+	  	website: "",
 	}, 
 	isLoading:false,
 	},actions){

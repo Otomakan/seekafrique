@@ -1,6 +1,6 @@
 class CompanysProfilesController < ApplicationController
     before_action :authenticate_request
-    attr_reader :current_user
+    attr_reader :current_company
 	def show
   		render json: {users: Company.all}, status:200
   	end
@@ -31,7 +31,7 @@ class CompanysProfilesController < ApplicationController
     end
 
     def show
-      render json: { profile: @current_user.as_json}, status: 200   
+      render json: { profile: @current_company.as_json}, status: 200   
     end
 
     private 	

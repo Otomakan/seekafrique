@@ -9,6 +9,7 @@ function mapStateToProps(state, ownProps) {
     return (
     {
     	loggedIn: ownProps.loggedIn,
+    	userType: ownProps.user_type,
     	sideMenuOpen: state.navBarReducer.open
     }) 	
 }

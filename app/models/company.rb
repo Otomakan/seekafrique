@@ -12,6 +12,6 @@ class Company
   field :companyName, type: String
   field :description, type: String
   field :website, type: String
-  has_many :job_posts 
+  has_many :jobPosts 
   has_many :applications
 end

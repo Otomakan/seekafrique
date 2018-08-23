@@ -17,7 +17,7 @@ function getProfile(){
         .then(
             res=>{
                 console.log(res)
-                dispatch(success(res))
+                dispatch(success(res.profile))
             })
         .catch(
             err=>{

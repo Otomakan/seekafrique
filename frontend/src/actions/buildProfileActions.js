@@ -42,8 +42,6 @@ const buildProfileActions = {
 export default buildProfileActions
 function uploadPInfo(pinfo){
 	return dispatch => {
-		console.log("PINFO")
-		console.log(pinfo)
 		dispatch(request())
 		buildProfileServices.uploadPInfo(pinfo)
 		.then(

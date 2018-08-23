@@ -6,6 +6,7 @@ import signupReducer from './signupReducers'
 import userReducer from './userReducer'
 import companyBuildProfileReducer from './companyBuildProfileReducer'
 import companyReducer from './companyReducer'
+import companyJobPostsReducer from './companyJobPostsReducer'
 export default  combineReducers({
 	authReducer,
 	userReducer,
@@ -14,4 +15,5 @@ export default  combineReducers({
 	signupReducer,
 	companyBuildProfileReducer,
 	companyReducer,
+	companyJobPostsReducer,
 })

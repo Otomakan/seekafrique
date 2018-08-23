@@ -43,9 +43,7 @@ class UserProfilesController < ApplicationController
     end
 
     def show
-    	puts @current_user.userProfile
-    	puts @current_user.userProfile.to_json
-		render json: { profile: @current_user.userProfile.as_json}, status: 200 	
+    	render json: { profile: @current_user.userProfile.as_json}, status: 200 	
     end
 
     private

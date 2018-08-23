@@ -1,6 +1,6 @@
 import ShowProfile from '../../../components/CompanyLoggedIn/ShowProfile.js'
 import {connect} from 'react-redux'
-import companyActions from '../../../actions/userActions.js'
+import companyActions from '../../../actions/companyActions.js'
 
 function mapDispatchToProps(dispatch){
 	return {
@@ -14,5 +14,5 @@ function mapStateToProps(state){
 	return state.companyReducer
 }
 
-const UserProfile = connect(mapStateToProps, mapDispatchToProps)(ShowProfile)
-export default UserProfile
+const CompanyProfile = connect(mapStateToProps, mapDispatchToProps)(ShowProfile)
+export default CompanyProfile

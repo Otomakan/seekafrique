@@ -4,9 +4,9 @@ import Button from '@material-ui/core/Button'
 import { withStyles } from '@material-ui/core/styles'
 import Card from '@material-ui/core/Card'
 import propTypes from 'prop-types'
-import DateFnsUtils from 'material-ui-pickers/utils/date-fns-utils'
-import MuiPickersUtilsProvider from 'material-ui-pickers/utils/MuiPickersUtilsProvider'
-import DatePicker from 'material-ui-pickers/DatePicker'
+// import DateFnsUtils from 'material-ui-pickers/utils/date-fns-utils'
+// import MuiPickersUtilsProvider from 'material-ui-pickers/utils/MuiPickersUtilsProvider'
+// import DatePicker from 'material-ui-pickers/DatePicker'
 
 
 export default class BasicInfo extends Component{
@@ -77,11 +77,13 @@ constructor(props) {
 			<TextField 
 					id="website"
 			        label="Website"
-			        name="wesbite"
+			        name="website"
 			        className="text-field"
 			        onChange={this.handleInputChange}
 			        margin="normal"
 			       />
+			       	<br/>
+			        <br/>
 			<TextField 
 				id="description"
 		        label="Company Description"
@@ -91,9 +93,6 @@ constructor(props) {
 		        margin="normal"
 		       />
 		     
-		       
-
-
 			<Button  onClick={()=>{
 				this.props.uploadBasicInfo({
 				company_profile:{
