@@ -1,6 +1,6 @@
 import {companyJobPostsConstants} from '../actions/companyJobPostsActions'
 
-export default function companyJobPostReducer(state={
+export default function companyJobPostsReducer(state={
 	jobPost:{
 		title:'',
 		description:'',

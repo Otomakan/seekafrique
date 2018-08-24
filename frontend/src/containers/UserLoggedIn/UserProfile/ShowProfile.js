@@ -1,4 +1,4 @@
-import ShowProfile from '../../../components/UserProfile/ShowProfile.js'
+import ShowProfile from '../../../components/UserLoggedIn/UserProfile/ShowProfile.js'
 import {connect} from 'react-redux'
 import userActions from '../../../actions/userActions.js'
 

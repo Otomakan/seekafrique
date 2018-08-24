@@ -1,6 +1,7 @@
-import PersonalInfoComp from '../../../components/BuildProfile/BuildProfile.js'
+import PersonalInfoComp from '../../../components/UserLoggedIn/BuildProfile/BuildProfile.js'
 import {connect} from 'react-redux'
 import buildProfileActions from '../../../actions/buildProfileActions.js'
+
 
 function mapDispatchToProps(dispatch){
 	return {

@@ -1,6 +1,4 @@
-class JobPostsController < ApplicationController
-    before_action :authenticate_request
-    attr_reader :current_company
+class JobPostsController < CompanyApiController
 
 	def createpost
 		@jobpost =  JobPost.new(create_post_params)
@@ -24,10 +22,7 @@ class JobPostsController < ApplicationController
 
 	private
 
-	def authenticate_request
-      @current_company = AuthCompanyApiCalls.call(request.headers).result
-      render json: { error: 'Not Authorized' }, status: 401 unless @current_company
-    end
+
 	def create_post_params
 		params.require(:jobPost).permit(:title, :description, :salary, :startDate, :contractType)
 	end

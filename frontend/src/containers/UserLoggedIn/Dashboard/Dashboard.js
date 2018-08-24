@@ -7,5 +7,5 @@ import React from 'react'
 function mapStateToProps(state, ownProps){
 	return state
 }
- const Dashboard = connect(mapStateToProps)(DashboardComponent)
+const Dashboard = connect(mapStateToProps)(DashboardComponent)
 export default Dashboard

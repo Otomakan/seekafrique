@@ -1,6 +1,5 @@
-class UserProfilesController < ApplicationController
-    before_action :authenticate_request
-    attr_reader :current_user
+class UserProfilesController < UserApiController
+
     def createpinfo
     	# testing = personalInfo.create()
 
@@ -47,10 +46,7 @@ class UserProfilesController < ApplicationController
     end
 
     private
-	    def authenticate_request
-			@current_user = AuthApiCalls.call(request.headers).result
-			render json: { error: 'Not Authorized' }, status: 401 unless @current_user
-		end
+
 
 		def pinfo_params
 			params.require(:user_profile).permit(:firstName, :lastName, :phoneNumber, :birthday, address:["addressLine", "zipcode","region","city"])

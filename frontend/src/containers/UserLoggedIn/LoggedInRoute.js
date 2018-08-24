@@ -9,6 +9,8 @@ import DashBoard from './Dashboard/Dashboard.js'
 import BuildProfile from './BuildProfile/BuildProfile.js'
 import ShowProfile from './UserProfile/ShowProfile.js'
 
+import ShowAllPosts from './JobPosts/ShowAll.js'
+
 
 class UserLoggedInRouteComponent extends Component {
 	constructor(props) {
@@ -28,10 +30,10 @@ class UserLoggedInRouteComponent extends Component {
 			<div className="LoggedInRoute">
 			<h3> Welcome {name}</h3>
 			<Switch>
-				<Route exact path='/' component={DashBoard}/>				
-				
+				<Route exact path='/' component={DashBoard}/>					
 				<Route exact path='/buildprofile' component={BuildProfile}/>
 				<Route exact path='/userprofile' component={ShowProfile}/>
+				<Route exact path='/jobposts/showall' component={ShowAllPosts}/>
 				</Switch>
 			<Button onClick={this.logOut}> <Link to="/">LOGOUT </Link></Button>
 			

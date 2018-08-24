@@ -9,7 +9,7 @@ class User
   
   field :password_digest
   has_secure_password
-  has_and_belongs_to_many :jobPosts
+  has_and_belongs_to_many :savedPosts, class_name:"JobPost"
   embeds_one :userProfile, autobuild: true
   field :subscription, type:String
   validates :subscription, inclusion: {in: ['free', 'classic','premium'], message: '%{value} is not a valid subscription type'}
