@@ -8,9 +8,9 @@ import MenuItem from '@material-ui/core/MenuItem'
 import Menu from '@material-ui/core/Menu'
 import {Link} from 'react-router-dom'
 import propTypes from 'prop-types'
-import SideMenu from './SideMenu'
+import CompanySideMenu from './CompanySideMenu'
 
-export default class UserLoggedInNavBar extends Component {
+export default class CompanyLoggedInNavBar extends Component {
 
   render(){
     const open = this.props.open

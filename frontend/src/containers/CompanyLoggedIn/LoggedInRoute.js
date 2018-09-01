@@ -10,6 +10,9 @@ import BuildProfile from './BuildProfile/BuildProfile.js'
 import ShowProfile from './CompanyProfile/ShowProfile.js'
 import CreateJobPost from './JobPosts/Create'
 import ShowOwnJobPosts from './JobPosts/ShowOwn'
+import ShowAllApplications from './JobPosts/ShowAllApplications'
+import ShowApplicantProfile from '../../components/CrossAssets/UserProfile/ShowProfile'
+
 
 class CompanyLoggedInRouteComponent extends Component {
 	constructor(props) {
@@ -29,14 +32,15 @@ class CompanyLoggedInRouteComponent extends Component {
 			<div className="LoggedInRoute">
 			<h3> Welcome {name}</h3>
 			<Switch>
-				<Route exact path='/' component={DashBoard}/>				
-				
+				<Route exact path='/' component={DashBoard}/>					
 				<Route exact path='/buildprofile' component={BuildProfile}/>
 				<Route exact path='/companyprofile' component={ShowProfile}/>
 				<Route exact path='/company/jobposts/create' component={CreateJobPost}/>
 				<Route exact path='/company/jobposts/showall' component={ShowOwnJobPosts}/>
-				
-				</Switch>
+				<Route exact path='/company/jobposts/applications/showall/:id' component={ShowAllApplications}/>
+				<Route exact path='/company/jobposts/applications/showprofile' component={ShowApplicantProfile}/>
+				<Route component={NoMatch} />
+			</Switch>
 			<Button onClick={this.logOut}> <Link to="/">LOGOUT </Link></Button>
 			
 			</div>
@@ -47,7 +51,7 @@ class CompanyLoggedInRouteComponent extends Component {
 function mapStateToProps(state){
 	return state
 }
-
+const NoMatch= ()=><h1>404 not found</h1>
 const CompanyLoggedInRoute = withRouter(connect(mapStateToProps)(CompanyLoggedInRouteComponent))
 
 

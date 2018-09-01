@@ -5,7 +5,9 @@ import { withStyles } from '@material-ui/core/styles'
 import Card from '@material-ui/core/Card'
 import propTypes from 'prop-types'
 import DatePicker from 'material-ui-pickers/DatePicker'
-
+import FormControlLabel from '@material-ui/core/FormControlLabel'
+import FormGroup from '@material-ui/core/FormGroup'
+import Checkbox from '@material-ui/core/Checkbox'
 
 export default class EducationBlock extends Component{
 constructor(props) {
@@ -14,6 +16,7 @@ constructor(props) {
 	  this.handleInputChange = this.handleInputChange.bind(this)
 	   this.handleStartDateChange = this.handleStartDateChange.bind(this)
 	   this.handleEndDateChange = this.handleEndDateChange.bind(this)
+	this.handleCheckBoxChange = this.handleCheckBoxChange.bind(this)
 }
 
 	handleStartDateChange(date){
@@ -39,9 +42,15 @@ constructor(props) {
 				{...this.props.eduProfile,
 				[name]: val})
 		}
+  	handleCheckBoxChange (name,e) {
+		this.props.handleEduStateChange(this.props.eduIndex, {
+			...this.props.jobProfile,
+			[name]: !this.props.currentlyStudying
+		})
+  	}
 
 	render(){
-		let {startDate, endDate,tempInstitution, degreeName} = this.props.eduProfile
+		let {startDate, endDate,tempInstitution, degreeName, currentlyStudying} = this.props.eduProfile
 		return (
 		<div>
 		<Card>
@@ -89,6 +98,17 @@ constructor(props) {
 			        value={endDate}
 			        onChange={this.handleEndDateChange}
 			        />
+
+			<FormControlLabel
+          control={
+            <Checkbox
+              checked={currentlyStudying}
+              onChange={(e)=>{this.handleCheckBoxChange('currentlyStudying',e)}}
+              value="currentlyStudying"
+            />
+          }
+          label="Currently Studying here"
+        />
 
 			<Button 
 				onClick={()=>{

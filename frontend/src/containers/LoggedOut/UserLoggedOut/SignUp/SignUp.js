@@ -5,7 +5,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 // import SignUpForm from '../../../components'
 
 import {connect} from 'react-redux'
-import signup from '../../../../actions/signUpActions.js'
+import signUpFuncs from '../../../../actions/signUpActions.js'
 
 
 
@@ -33,9 +33,7 @@ class SignUpComponent extends Component {
 	}
 
 	handleSubmit(){
-		// const {subscription, email, password} = this.state
-		console.log(this.state)
-		this.props.dispatch(signup(this.state))
+		this.props.dispatch(signUpFuncs.userSignup(this.state))
 	}
 
 	render(){

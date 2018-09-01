@@ -12,6 +12,8 @@ import Menu from '@material-ui/core/Menu'
 import {Link} from 'react-router-dom'
 import propTypes from 'prop-types'
 import SideMenu from './SideMenu'
+import UserSideMenu from './UserSideMenu'
+import CompanySideMenu from './CompanySideMenu'
 import LoggedOutNavBar from './LoggedOut'
 import UserLoggedInNavBar from './UserLoggedIn'
 import CompanyLoggedInNavBar from './CompanyLoggedIn'
@@ -77,8 +79,12 @@ class NavigationBar extends Component {
             }
 			</Toolbar>
 		</AppBar>
-
-    <SideMenu loggedIn={loggedIn} toggleMenu={()=>{this.props.toggleMenu()}} sideMenuOpen={this.props.sideMenuOpen}/>
+    {loggedIn 
+    ? user_type ==='company'
+    ?<CompanySideMenu loggedIn={loggedIn} toggleMenu={()=>{this.props.toggleMenu()}} sideMenuOpen={this.props.sideMenuOpen}/>
+    :<UserSideMenu loggedIn={loggedIn} toggleMenu={()=>{this.props.toggleMenu()}} sideMenuOpen={this.props.sideMenuOpen}/>
+    :<SideMenu loggedIn={loggedIn} toggleMenu={()=>{this.props.toggleMenu()}} sideMenuOpen={this.props.sideMenuOpen}/>
+    }    
     </div>
 		)
 	}

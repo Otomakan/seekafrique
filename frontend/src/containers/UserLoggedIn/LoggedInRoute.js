@@ -10,6 +10,10 @@ import BuildProfile from './BuildProfile/BuildProfile.js'
 import ShowProfile from './UserProfile/ShowProfile.js'
 
 import ShowAllPosts from './JobPosts/ShowAll.js'
+import ShowSavedPosts from './JobPosts/ShowSaved.js'
+import ApplyToJob from './JobPosts/ApplyToJob'
+import ShowAllOwnApplications from './JobPosts/ShowAllOwnApplications'
+import NoMatch from '../LoggedOut/NoMatch.js'
 
 
 class UserLoggedInRouteComponent extends Component {
@@ -34,6 +38,10 @@ class UserLoggedInRouteComponent extends Component {
 				<Route exact path='/buildprofile' component={BuildProfile}/>
 				<Route exact path='/userprofile' component={ShowProfile}/>
 				<Route exact path='/jobposts/showall' component={ShowAllPosts}/>
+				<Route exact path='/user/jobposts/showsaved' component={ShowSavedPosts}/>
+				<Route exact path='/user/jobposts/applytojob' component={ApplyToJob}/>
+				<Route exact path='/user/jobposts/applications/showall' component={ShowAllOwnApplications}/>
+				<Route component={NoMatch} />
 				</Switch>
 			<Button onClick={this.logOut}> <Link to="/">LOGOUT </Link></Button>
 			

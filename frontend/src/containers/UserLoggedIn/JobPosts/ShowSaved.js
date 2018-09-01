@@ -1,15 +1,15 @@
 
-import ShowAllPostsComponent from '../../../components/UserLoggedIn/JobPosts/ShowAll.js'
+import ShowSavedPostsComponent from '../../../components/UserLoggedIn/JobPosts/ShowSaved.js'
 import {connect} from 'react-redux'
 import userJobPostsActions from '../../../actions/userJobPostsActions.js'
 
 function mapDispatchToProps(dispatch){
 	return {
-		getAllPosts:()=>{
-			dispatch(userJobPostsActions.getAllPosts())
+		getSavedPosts:()=>{
+			dispatch(userJobPostsActions.getSavedPosts())
 		},
-		savePost:(postId)=>{
-			dispatch(userJobPostsActions.savePost(postId))
+		unsavePost:(postId)=>{
+			dispatch(userJobPostsActions.unsavePost(postId))
 		},
 		uploadApplication:(jobApplication)=>{
 			dispatch(userJobPostsActions.uploadApplication(jobApplication))
@@ -24,6 +24,6 @@ function mapStateToProps(state){
 	return state.userJobPostsReducer
 }
 
-const ShowAllPosts = connect(mapStateToProps, mapDispatchToProps)(ShowAllPostsComponent)
-export default ShowAllPosts
+const ShowSavedPosts = connect(mapStateToProps, mapDispatchToProps)(ShowSavedPostsComponent)
+export default ShowSavedPosts
 

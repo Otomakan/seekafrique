@@ -5,6 +5,9 @@ import { withStyles } from '@material-ui/core/styles'
 import Card from '@material-ui/core/Card'
 import propTypes from 'prop-types'
 import DatePicker from 'material-ui-pickers/DatePicker'
+import FormControlLabel from '@material-ui/core/FormControlLabel'
+import FormGroup from '@material-ui/core/FormGroup'
+import Checkbox from '@material-ui/core/Checkbox'
 
 export default class WorkBlock extends Component{
 constructor(props) {
@@ -13,7 +16,7 @@ constructor(props) {
 	this.handleInputChange = this.handleInputChange.bind(this)
 	this.handleStartDateChange = this.handleStartDateChange.bind(this)
 	this.handleEndDateChange = this.handleEndDateChange.bind(this)
-
+	this.handleCheckBoxChange = this.handleCheckBoxChange.bind(this)
 	}
 
 	handleInputChange(e){
@@ -30,22 +33,29 @@ constructor(props) {
 	handleStartDateChange(date){
 			this.props.handleWorkStateChange(this.props.wIndex, 
 				{...this.props.jobProfile,
-					endDate: date })
+					startDate: date })
 
   	}
   	handleEndDateChange(date){
 			this.props.handleWorkStateChange(this.props.wIndex, {
 				...this.props.jobProfile,	
-				startDate: date 
+				endDate: date 
 			})
 
   	}
+  	handleCheckBoxChange (name,e) {
+		this.props.handleWorkStateChange(this.props.wIndex, {
+			...this.props.jobProfile,
+			name:e.target.checked
+		})
+  	}
 	render(){
-		let {company, jobTitle, startDate, endDate, companyWebsite} = this.props.jobProfile
+		let {company, jobTitle, startDate, endDate, companyWebsite, currentlyWorking} = this.props.jobProfile
 		return (
 		<div>
 		<Card>
 			<Errors loginErrors={this.props.loginErrors}/>
+			<FormGroup>
 			<form>
 			<TextField 
 					  id="company"
@@ -99,9 +109,21 @@ constructor(props) {
 			        <Button onClick={()=>{
 			        	this.props.removeWork(this.props.wIndex)
 			        }}>Remove Work</Button>
+		
+		<FormControlLabel
+          control={
+            <Checkbox
+              checked={currentlyWorking}
+              onChange={(e)=>{this.handleCheckBoxChange("currentlyWorking",e)}}
+              value="currentlyWorking"
+            />
+          }
+          label="Currently Working here"
+        />
 
 			
 		</form>
+		</FormGroup>
 		</Card>
 		</div>
 		)

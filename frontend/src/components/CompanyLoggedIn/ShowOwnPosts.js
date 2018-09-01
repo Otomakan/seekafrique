@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import {Link} from 'react-router-dom'
 
 export default class ShowOwnPosts extends Component {
 	constructor(props) {
@@ -13,9 +14,12 @@ export default class ShowOwnPosts extends Component {
 		return this.props.allJobPosts.length>0
 		?
 		<ul>
-			{this.props.allJobPosts.map((content,key)=>
-				<li key={key}> {content.title}</li>
-				)
+			{this.props.allJobPosts.map((content,key)=>{
+				let link = '/company/jobposts/applications/showall/'+content._id.$oid
+				return <li key={key}> {content.title} <Link to={link}><button> Show all Applications </button></Link></li>
+			
+			}
+					)
 			}
 			
 		</ul>			

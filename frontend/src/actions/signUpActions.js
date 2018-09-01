@@ -11,7 +11,7 @@ export const signupConstants = {
 	COMPANY_SIGNUP_FAIL: 'NEW_USER_REGISTER_FAIL'
 }
 
-function signup(info) {
+function userSignup(info) {
 	return dispatch => {
 		dispatch(request())
 		fetch('http://localhost:5000/users.json',{
@@ -98,7 +98,7 @@ function companySignup(info) {
 	}
 }
 const signUpFuncs={
-	signup,
+	userSignup,
 	companySignup
 }
 export default signUpFuncs

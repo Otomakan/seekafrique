@@ -9,6 +9,7 @@ export default function(state={personalInfo:false,
 	  	startDate: new Date(),
 	  	endDate: new Date(),
 	  	errors:[],
+	  	currentlyStudying: false,
 	}],
 	workH:[{
 			company:"",
@@ -16,6 +17,7 @@ export default function(state={personalInfo:false,
 	  		jobTitle:"",
 	  		startDate: new Date(),
 	  		endDate: new Date(),
+	  		currentlyWorking: false,
 	}]}, action){
 	switch(action.type){
 		case buildProfileConstants.PINFO_REQUEST:

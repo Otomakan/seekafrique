@@ -80,3 +80,23 @@ message:
  For the application user models think a little bit deeper
 
  There needsd to be a bit of reorganizing in the controllers. For instance maybe create a CompanyAPICallController so that all the Compay api calls go through the same check filtes and we don't ave to rewrite same code everytime
+
+ There are some weird bugs with the routing because the cookies arent cleared properly
+
+ We got a problem I think I create a cookie for every new page I load so there is a bunch of cookies everywhere
+
+ Close the Window if Saved post is successfuly saved
+
+ use the delete function in order to dereference a HABTM relationshop
+
+ There is still a problem when uploading the cover letter
+
+ Make sure when you make a show allapplications request that the company making the request is the owner of the jobposts
+
+ On the showall page change stuff so that you can see all the applications and add more details about the jobpost
+
+ Problem with the show all page because we load probably too much information at once. 
+
+ Should the Company have the ability to add notes to the applicants ?
+
+ Add a created At for the jobPosts

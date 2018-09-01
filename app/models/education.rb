@@ -6,5 +6,6 @@ class Education
   field :degreeName, type: String
   field :startDate, type: Date
   field :endDate, type: Date
+  field :currentlyStudying, type: Boolean
   embedded_in :userProfile
 end

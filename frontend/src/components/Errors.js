@@ -5,7 +5,7 @@ export default class Errors extends Component{
 	this.props.errors
 	?
 		this.props.errors.length>0
-		? <h3> {this.props.errors}</h3>
+		? <h3> Error: {this.props.errors}</h3>
 		: null
 	:null)
 	}

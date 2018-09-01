@@ -67,9 +67,10 @@ function login(user_type, email, password, redirect) {
 }
 
 function logout() {
-    authServices.logout()
     history.push('/')
-    return {type:authConstants.LOGOUT}
+    authServices.logout()
+        return {type:authConstants.LOGOUT}
+
 }
 
 function checktoken(){

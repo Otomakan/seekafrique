@@ -41,61 +41,73 @@ export default class SideMenu extends Component{
           >
           </div>
 
-          {
-            this.props.loggedIn?
-            <div className="loggedin-sidemenu-list">
+            <div className="loggedout-sidemenu-list">
             <List> 
-            <Link to="/dashboard" onClick={()=>this.toggleMenu()}>
+
+            <Link to="/" onClick={()=>this.toggleMenu()}>
               <ListItem>
                 <ListItemIcon>
                   <DashBoardIcon />
                 </ListItemIcon>
-                <ListItemText primary="DashBoard" />
+                <ListItemText primary="Home Page" />
               </ListItem>
               </Link>
-              <Link to="/showdecks" onClick={()=>this.toggleMenu()}>
+              <Divider/>
+               <ListItem>
+                <ListItemIcon>
+                  <DashBoardIcon />
+                </ListItemIcon>
+                <ListItemText primary="Company" />
+              </ListItem>
+              <List>
+              <Link to="/company/login" onClick={()=>this.toggleMenu()}>
               <ListItem>
                <ListItemIcon>
                   <LineStyleIcon />
                 </ListItemIcon>
-               <ListItemText primary="Stuff" />
+               <ListItemText primary="Login" />
+               </ListItem>
+               </Link>
+              <Link to="/company/signup" onClick={()=>this.toggleMenu()}>
+              <ListItem>
+               <ListItemIcon>
+                  <LineStyleIcon />
+                </ListItemIcon>
+               <ListItemText primary="Signup" />
                </ListItem>
                </Link>
               </List>
               <Divider />
-                <List>
-                <ListItem>
-                 <ListItemText primary="Blob" />
-                 </ListItem>
-                 <ListItem>
-                  <ListItemText primary="Golo" />
-                  </ListItem>
-          </List>
-          </div>
-            :
-            <div className="loggedout-sidemenu-list">
             <List> 
-              <ListItem>
+
+              <Divider/>
+               <ListItem>
                 <ListItemIcon>
-                  <InboxIcon />
+                  <DashBoardIcon />
                 </ListItemIcon>
-                <ListItemText primary="Inbox" />
+                <ListItemText primary="User" />
               </ListItem>
+              <List>
+              <Link to="/login" onClick={()=>this.toggleMenu()}>
               <ListItem>
-               <ListItemText primary="Stuff" />
+               <ListItemIcon>
+                  <LineStyleIcon />
+                </ListItemIcon>
+               <ListItemText primary="Login" />
                </ListItem>
+               </Link>
+              <Link to="/signup" onClick={()=>this.toggleMenu()}>
+              <ListItem>
+               <ListItemIcon>
+                  <LineStyleIcon />
+                </ListItemIcon>
+               <ListItemText primary="Signup" />
+               </ListItem>
+               </Link>
               </List>
-              <Divider />
-                <List>
-                <ListItem>
-                 <ListItemText primary="Blob" />
-                 </ListItem>
-                 <ListItem>
-                  <ListItemText primary="Golo" />
-                  </ListItem>
+          </List>
           </List>
           </div>
-          }
           
           </SwipeableDrawer>
      

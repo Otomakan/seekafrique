@@ -19,7 +19,16 @@ Rails.application.routes.draw do
   get 'companyprofile', to: 'companys_profiles#show'
   post 'company/jobpost/create', to: 'job_posts#createpost'	
   get 'company/jobpost/getall', to: 'job_posts#showallownposts'
+  get 'company/jobposts/applications/showall/:id', to: 'job_posts#showallapplications'
 
   get 'jobposts/showall', to: 'user_job_posts#showallposts'
   post 'user/jobposts/save/:id', to: 'user_job_posts#savepost'
+  delete 'user/jobposts/unsave/:id', to: 'user_job_posts#unsavepost'
+
+  get 'user/jobposts/saved', to: 'user_job_posts#showsavedposts'
+  get 'user/jobposts/applications/showall', to: 'user_job_posts#showallapplications'
+  
+  post 'user/jobposts/newapplication', to: 'user_job_posts#applytojob'
+  post 'company/jobposts/applications/changestatus', to: 'job_posts#changeapplicationstatus'
+
 end
