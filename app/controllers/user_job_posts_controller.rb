@@ -1,9 +1,13 @@
 class UserJobPostsController < UserApiController
 	def showallposts
-		JobPost.all.each |jb| do
-			puts JobPost.company.companyName
+		allPost = []
+		JobPost.all.each do|jp|
+			companyName = jp.company.companyName
+			jp = Hash[jp.attributes]
+			jp[:companyName] = companyName
+			allPost.push(jp)
 		end
-		render json: {allJobPosts: JobPost.all}, status:200
+		render json: {allJobPosts: allPost}, status:200
 	end
 
 	def savepost
