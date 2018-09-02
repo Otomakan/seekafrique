@@ -16,7 +16,7 @@ import TableHead from '@material-ui/core/TableHead'
 import TableRow from '@material-ui/core/TableRow'
 import Paper from '@material-ui/core/Paper'
 import ButtonBase from '@material-ui/core/ButtonBase'
-import Ink from 'react-ink'
+
 
 export default class ShowAllPostsComponent extends Component {
 	constructor(props) {
@@ -29,9 +29,6 @@ export default class ShowAllPostsComponent extends Component {
 		this.state={
 			dialogJobPostOpen:false,
 			dialogContent:{},
-			style:{
-				ripple: "ripple",
-			}
 		}
 	}
 	showJobPostDialog(content,e) {
@@ -61,8 +58,8 @@ export default class ShowAllPostsComponent extends Component {
 			{errors
 				?<Errors errors={errors}/>
 				:null}
-			
-			<Table>
+			{allJobPosts
+			? <Table>
 	        <TableHead>
 	          <TableRow>
 	            <TableCell>Position</TableCell>
@@ -71,19 +68,19 @@ export default class ShowAllPostsComponent extends Component {
 	        </TableHead>
 			 <TableBody>
 			{allJobPosts.map((content, key)=>
-				
-				<TableRow hover
-				className="ripple"
+				<TableRow 
 				key={key}
 				onClick={(e)=>this.showJobPostDialog(content,e)
 				}>
-				<Ink />
 				<TableCell component="th" scope="row"> {content.title} </TableCell>
-				<TableCell numeric>{content.companyName}</TableCell>
+				<TableCell  numeric>{content.companyName}</TableCell>
 				</TableRow>
 				)}
 			</TableBody>
-		</Table>
+			</Table>
+			: <h3>Loading</h3>
+			}
+			
 
 
 			<Dialog onClose={this.handleClose} 
