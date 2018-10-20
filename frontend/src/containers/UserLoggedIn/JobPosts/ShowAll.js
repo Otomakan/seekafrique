@@ -8,8 +8,11 @@ function mapDispatchToProps(dispatch){
 		getAllPosts:()=>{
 			dispatch(userJobPostsActions.getAllPosts())
 		},
-		savePost:(postId)=>{
-			dispatch(userJobPostsActions.savePost(postId))
+		savePost:(postId,key)=>{
+			dispatch(userJobPostsActions.savePost(postId,key))
+		},
+		unsavePost:(postId,key)=>{
+			dispatch(userJobPostsActions.unsavePost(postId,key))
 		},
 		uploadApplication:(jobApplication)=>{
 			dispatch(userJobPostsActions.uploadApplication(jobApplication))
@@ -17,6 +20,9 @@ function mapDispatchToProps(dispatch){
 		handleApplicationStateChange:(jobApplication)=>{
 			dispatch(userJobPostsActions.handleApplicationStateChange(jobApplication))
 		},
+		uploadApplicationReset:()=>{
+			dispatch(userJobPostsActions.uploadApplicationReset())
+		}
 
 	}
 }

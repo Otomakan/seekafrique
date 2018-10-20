@@ -7,6 +7,7 @@ export default function userJobPostsReducer(state={
 	jobApplication:{
 		coverLetter:"",
 	},
+	applicationUploaded:false,
 }, actions){
 	switch(actions.type){
 		case userJobPostsConstants.SHOW_JOB_POSTS_REQUEST:
@@ -33,6 +34,7 @@ export default function userJobPostsReducer(state={
 			saveJobPostLoading:true,
 		}
 		case userJobPostsConstants.SAVE_JOB_POST_SUCCESS:
+		state.allJobPosts[actions.key].saved = true
 		return {
 			...state,
 			saveJobPostLoading:false,
@@ -68,6 +70,8 @@ export default function userJobPostsReducer(state={
 			unsaveJobPostLoading:true,
 		}
 		case userJobPostsConstants.UNSAVE_JOB_POST_SUCCESS:
+		console.log(actions.key)
+		state.allJobPosts[actions.key].saved = false
 		return {
 			...state,
 			unsaveJobPostLoading:false,
@@ -104,6 +108,31 @@ export default function userJobPostsReducer(state={
 				mainLoading:false,
 				errors: actions.err
 			}
+		case userJobPostsConstants.UPLOAD_APPLICATION_REQUEST:
+			return{
+				...state,
+				uploadingApplication:true
+			}
+		case userJobPostsConstants.UPLOAD_APPLICATION_SUCCESS:
+			return{
+				...state,
+				uploadingApplication:false,
+				applicationUploaded:true,
+			}
+		case userJobPostsConstants.UPLOAD_APPLICATION_FAILURE:
+			return{
+				...state,
+				uploadingApplication:true,
+				applicationUploaded:false,
+				applicationUploadError: actions.err,
+			}
+		case userJobPostsConstants.UPLOAD_APPLICATION_RESET:
+		return{
+			...state,
+			uploadingApplication:false,
+			applicationUploaded:false,
+			applicationUploadError:null
+		}
 		default:
 		return {
 			...state

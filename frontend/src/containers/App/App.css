@@ -1,33 +1,242 @@
+body {
+  font-family: Helvetica;
+  font-weight: normal;
+  background-color: white; }
+
+p, h1, h2, h3, h4, h4 {
+  color: black;
+  font-weight: normal;
+  font-family: Helvetica; }
+
+tr {
+  cursor: pointer !important; }
+
+.toolbar {
+  background-color: white;
+  color: #9c9c9c; }
+  @media (max-width: 675px) {
+    .toolbar {
+      background-color: #C86DD7; } }
+
+.appbar-wrapper {
+  display: flex; }
+
+.appbar-buttons-container {
+  display: flex;
+  margin: 0 10px; }
+  .appbar-buttons-container .light-button {
+    border-color: rgba(58, 43, 224, 0.5) !important;
+    text-decoration: none !important;
+    text-transform: none;
+    margin: 0 3px; }
+    .appbar-buttons-container .light-button:hover {
+      border-color: #3a2be0 !important;
+      background-color: rgba(93, 80, 235, 0.05) !important; }
+
 .main-container {
   margin-left: auto;
   margin-right: auto;
-  margin-top: 56px; }
+  margin-top: 60px;
+  display: inline-block; }
+
+.logged-out-bar {
+  display: flex;
+  align-items: center; }
+  .logged-out-bar .appbar-logo {
+    max-height: 54px;
+    position: relative; }
+  .logged-out-bar .appbar-title {
+    color: #3A2BE0 !important;
+    font-weight: bold;
+    margin: 0 10px; }
+  .logged-out-bar .appbar-content {
+    display: flex;
+    align-items: center; }
+    .logged-out-bar .appbar-content .appbar-content-link {
+      text-transform: uppercase;
+      font-weight: 100;
+      color: #9c9c9c;
+      margin: 0 10px; }
+
+.logged-out-home-container {
+  width: 100vw; }
+  .logged-out-home-container .home-hero {
+    display: flex;
+    height: 380px;
+    padding-left: 10vw;
+    background-color: #F2F7FA; }
+    .logged-out-home-container .home-hero .hero-text-block {
+      padding: 30px 0;
+      width: 40vw;
+      background-color: rgba(0, 0, 0, 0); }
+    .logged-out-home-container .home-hero .hero-image-block {
+      height: 380px;
+      position: absolute;
+      right: 0; }
+      .logged-out-home-container .home-hero .hero-image-block img {
+        height: 100%; }
+    @media (max-width: 675px) {
+      .logged-out-home-container .home-hero {
+        height: auto; }
+        .logged-out-home-container .home-hero .hero-text-block {
+          position: relative;
+          padding: 20px 10px;
+          width: 90vw;
+          background-color: rgba(0, 0, 0, 0); } }
+    .logged-out-home-container .home-hero h1 {
+      color: #3A2BE0; }
+    .logged-out-home-container .home-hero h3 {
+      color: #4A4A4A;
+      font-weight: lighter;
+      margin-bottom: 50px; }
+  .logged-out-home-container .home-hero-destination {
+    padding: 50px 0;
+    width: 100vw;
+    text-align: center; }
+    .logged-out-home-container .home-hero-destination h2 {
+      color: #3A2BE0;
+      font-weight: normal; }
+    .logged-out-home-container .home-hero-destination h3 {
+      color: #4A4A4A;
+      font-weight: lighter;
+      margin-bottom: 10px; }
+    .logged-out-home-container .home-hero-destination .country-list {
+      text-align: center;
+      display: inline-block;
+      margin: 100px 0;
+      width: 700px; }
+      @media (max-width: 850px) {
+        .logged-out-home-container .home-hero-destination .country-list {
+          width: 80%; } }
+      .logged-out-home-container .home-hero-destination .country-list img {
+        width: 100%; }
+  .logged-out-home-container .featured-opportunities {
+    width: 100vw;
+    max-width: 100vw;
+    background-color: #F2F7FA;
+    padding: 50px 0;
+    text-align: center;
+    flex-wrap: wrap;
+    justify-content: center; }
+    .logged-out-home-container .featured-opportunities h2 {
+      color: #3A2BE0;
+      font-weight: normal; }
+    .logged-out-home-container .featured-opportunities h3 {
+      color: #4A4A4A;
+      font-weight: lighter;
+      margin-bottom: 10px; }
+    .logged-out-home-container .featured-opportunities .three-cards-container {
+      padding: 0 30px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      max-width: 100vw; }
+    .logged-out-home-container .featured-opportunities .search-bar-container {
+      margin: 100px 0;
+      display: inline-block; }
+  .logged-out-home-container .become-a-member {
+    width: 100vw;
+    max-width: 100vw;
+    padding: 50px 0;
+    color: white;
+    display: flex;
+    justify-content: center;
+    padding: 50px 0;
+    font-weight: lighter;
+    font-size: 1em; }
+    .logged-out-home-container .become-a-member h1, .logged-out-home-container .become-a-member h2 {
+      color: white;
+      font-weight: lighter; }
+    .logged-out-home-container .become-a-member h1 {
+      font-size: 1.5em; }
+    .logged-out-home-container .become-a-member h2 {
+      font-size: 1em; }
+    .logged-out-home-container .become-a-member .wrapper {
+      width: 80vw;
+      display: flex;
+      justify-content: center; }
+      .logged-out-home-container .become-a-member .wrapper .text-block {
+        width: 30vw;
+        background-color: #3A2BE0;
+        height: 100%; }
+      .logged-out-home-container .become-a-member .wrapper .image-block {
+        height: 100%;
+        background-color: #3A2BE0; }
+        .logged-out-home-container .become-a-member .wrapper .image-block img {
+          width: 100%; }
+      @media (max-width: 1050px) {
+        .logged-out-home-container .become-a-member .wrapper {
+          display: inline-block; }
+          .logged-out-home-container .become-a-member .wrapper .text-block {
+            padding: 35px 10px;
+            background-color: white;
+            width: 100%;
+            color: #4A4A4A; }
+            .logged-out-home-container .become-a-member .wrapper .text-block h1, .logged-out-home-container .become-a-member .wrapper .text-block h2 {
+              color: #4A4A4A; }
+            .logged-out-home-container .become-a-member .wrapper .text-block ul {
+              margin-bottom: 30px; }
+          .logged-out-home-container .become-a-member .wrapper .image-block {
+            background-color: white;
+            width: 100%;
+            height: auto; } }
+  .logged-out-home-container .signup-hero {
+    width: 100vw;
+    padding: 50px 0;
+    color: white;
+    display: inline-block;
+    text-align: center;
+    padding: 50px 0;
+    font-weight: lighter;
+    font-size: 1em; }
+    .logged-out-home-container .signup-hero h2 {
+      color: #3A2BE0; }
+    .logged-out-home-container .signup-hero h4 {
+      color: #4A4A4A; }
+
+.login-form h3 {
+  color: #3A2BE0;
+  padding-bottom: 0;
+  margin-bottom: 0; }
+
+.icon-menu {
+  color: white; }
+
+.small-jobpost-card {
+  min-width: 275px;
+  margin: 10px 10px;
+  max-width: 350px; }
+
+.search-bar {
+  background: #FFFFFF;
+  border: 1px solid rgba(58, 43, 224, 0.24);
+  box-shadow: 0 2px 49px 0 rgba(58, 43, 224, 0.2);
+  border-radius: 100px;
+  color: #4A90E2;
+  letter-spacing: 0;
+  text-align: center;
+  line-height: 24px;
+  width: 70vw; }
+  .search-bar .button {
+    background: #3A2BE0;
+    box-shadow: 0 2px 49px 0 rgba(58, 43, 224, 0.2);
+    border-radius: 0 29px 29px 0;
+    width: 100px; }
 
 .form-container .text-field {
   margin-left: 20px;
   margin-right: 20px;
   width: 200px; }
 
-.ripple-el {
-  position: relative;
-  overflow: hidden;
-  transform: translate3d(0, 0, 0); }
-  .ripple-el:after {
-    content: "";
-    display: block;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    pointer-events: none;
-    background-image: radial-gradient(circle, #000 10%, transparent 10.01%);
-    background-repeat: no-repeat;
-    background-position: 50%;
-    transform: scale(10, 10);
-    opacity: 0;
-    transition: transform .5s, opacity 1s; }
-  .ripple-el:active:after {
-    transform: scale(0, 0);
-    opacity: .2;
-    transition: 0s; }
+.upload-validated {
+  color: #4caf50 !important; }
+
+.upload-not-validated {
+  background-color: red;
+  color: red !important; }
+
+.dark-button {
+  background-color: #3A2BE0 !important;
+  color: white !important; }
+  .dark-button:hover {
+    background-color: #3023AE !important; }

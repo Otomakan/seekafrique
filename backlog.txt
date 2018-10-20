@@ -102,3 +102,5 @@ message:
  Add a created At for the jobPosts
 
  think about including a Company name field iembedded in the JobPost model because now we have to fetch shit weirdly all the time
+
+ Maybe change style of list if job has been applied to 

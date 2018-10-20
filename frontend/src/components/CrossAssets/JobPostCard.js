@@ -23,19 +23,21 @@ export default class JobPostCard extends Component {
 		          <Typography component="p">Description: <br/>{jobPost.description}</Typography> 
 		          </CardContent>
 		          <CardActions>
-
 		          {
 		          	this.props.buttons.map((content,key)=>
-		          		<Button key={key}
-		          		onClick={()=>{content.buttonFunction()}}
+		          		content.disabled
+		          		? <Button key={key}
+		          		disabled
 		          		color="primary" 
 		          		size="small">{content.buttonName}</Button>
+		          		: <Button key={key}
+		          		onClick={()=>{content.buttonFunction()}}
+		          		color="primary" 
+		          		size="small">{content.buttonName}</Button> 		
 		          	)
 		          }
-
-		        	</CardActions>
-		          
-		        </Card>
+		        </CardActions>  
+		    </Card>
 			)
 	}
 }

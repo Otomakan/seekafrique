@@ -7,6 +7,11 @@ import CardActions from '@material-ui/core/CardActions'
 import CardContent from '@material-ui/core/CardContent'
 import Typography from '@material-ui/core/Typography'
 import propTypes from 'prop-types'
+
+import CheckIcon from '@material-ui/icons/Check'
+import SaveIcon from '@material-ui/icons/Save'
+import CircularProgress from '@material-ui/core/CircularProgress';
+import green from '@material-ui/core/colors/green'
 //Takes in a jobPost prop with all your nromal jobPost props
 //As weel as userJobPostActions(uploadapplication, hanleApplicationStateChange),
 //Uses the userJobPostReducer
@@ -21,6 +26,7 @@ export default class ApplyToJobComponent extends Component{
 				...this.props.jobApplication,
 				jobPostId: this.props.jobPost._id.$oid
 		})
+	
 		
 	}
 	handleApplicationStateChange(e){
@@ -33,12 +39,11 @@ export default class ApplyToJobComponent extends Component{
 			{
 			...this.props.jobApplication,
 			[name]: val
-		}
-		)
+		})
 	}
 
 	render(){
-		const {jobApplication, jobPost} = this.props
+		const {jobApplication, jobPost, uploadingApplication, applicationUploaded, applicationUploadError} = this.props
 		return(
 		<div>	
 		<Card>
@@ -59,11 +64,16 @@ export default class ApplyToJobComponent extends Component{
 						          margin="normal"
 						          />
 						 <Button 
+						 	disabled={applicationUploaded}
+						 	className={applicationUploaded ? "upload-validated":applicationUploadError?'upload-not-validated':null}
 						 	onClick={()=>{
-						 		console.log(jobApplication)
 						 		this.props.uploadApplication({jobApplication})
 						 		}}
-						 		>Upload Cover Letter</Button>
+						 		>{applicationUploaded?
+						 			"SUCCESS"
+						 			:"Upload Cover Letter"}</Button>
+						 			{uploadingApplication && <CircularProgress size={24}/>
+						 		}
 				</form>
 		          </CardContent>
 			

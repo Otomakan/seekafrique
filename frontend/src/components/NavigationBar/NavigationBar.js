@@ -14,9 +14,12 @@ import propTypes from 'prop-types'
 import SideMenu from './SideMenu'
 import UserSideMenu from './UserSideMenu'
 import CompanySideMenu from './CompanySideMenu'
+import LoggedOutSideMenu from './LoggedOutSideMenu'
 import LoggedOutNavBar from './LoggedOut'
 import UserLoggedInNavBar from './UserLoggedIn'
 import CompanyLoggedInNavBar from './CompanyLoggedIn'
+import LoggedOutBar from './LoggedOutBar'
+import MediaQuery from 'react-responsive'
 
 class NavigationBar extends Component {
 
@@ -26,7 +29,7 @@ class NavigationBar extends Component {
 	  this.state = {
 	  	anchorEl: null,
 	  	auth:true,
-      title: "Dictionary",
+      title: "Seek Afrique",
 	  }
     this.handleMenu = this.handleMenu.bind(this)
     this.handleClose = this.handleClose.bind(this)
@@ -53,38 +56,51 @@ class NavigationBar extends Component {
 		const open = Boolean(anchorEl)
 		return(
     <div className="main-menu">
-		<AppBar>
-			<Toolbar>
-			<IconButton onClick={this.props.toggleMenu} color="inherit" aria-label="Menu">
+		<AppBar className="appbar" positionAbsolute>
+    <Toolbar className="toolbar">
+    {loggedIn
+      ?
+      <div>
+      <IconButton onClick={this.props.toggleMenu} color="inherit" aria-label="Menu">
               <MenuIcon />
             </IconButton>
-             <Typography variant="title" color="inherit" >
-              {this.state.title}
-            </Typography>
-            {loggedIn 
-              ? user_type ==='company'
+             
+                <Typography variant="title" color="inherit" >
+                <Link to='/' style={{ textDecoration: 'none'}}>
+                  {this.state.title}
+                  </Link>
+                </Typography>
+              
+            {user_type ==='company'
                ?<CompanyLoggedInNavBar
                  handleClose={()=>{this.handleClose()}}
                  handleMenu={(e)=>{this.handleMenu(e)}}
                  logout={()=>{this.logout()}}
                  open={open} anchorEl={anchorEl}/>
-              :
-               <UserLoggedInNavBar 
+              : <UserLoggedInNavBar 
                   handleClose={()=>{this.handleClose()}}
                   handleMenu={(e)=>{this.handleMenu(e)}}
                   logout={()=>{this.logout()}}
                   open={open} anchorEl={anchorEl}/>
-
-              : <p>LoggedOut</p>
             }
-			</Toolbar>
+      </div>
+      :<div>
+      <MediaQuery class="small" maxWidth={900}>   
+       <IconButton onClick={this.props.toggleMenu}  color="inherit" aria-label="Menu">
+              <MenuIcon className='icon-menu'/>
+            </IconButton>
+         </MediaQuery>
+         <LoggedOutBar/>
+
+        </div>
+    }
+		</Toolbar>	
 		</AppBar>
-    {loggedIn 
-    ? user_type ==='company'
+    { loggedIn
+    ?user_type ==='company'
     ?<CompanySideMenu loggedIn={loggedIn} toggleMenu={()=>{this.props.toggleMenu()}} sideMenuOpen={this.props.sideMenuOpen}/>
     :<UserSideMenu loggedIn={loggedIn} toggleMenu={()=>{this.props.toggleMenu()}} sideMenuOpen={this.props.sideMenuOpen}/>
-    :<SideMenu loggedIn={loggedIn} toggleMenu={()=>{this.props.toggleMenu()}} sideMenuOpen={this.props.sideMenuOpen}/>
-    }    
+    :<LoggedOutSideMenu loggedIn={loggedIn} toggleMenu={()=>{this.props.toggleMenu()}} sideMenuOpen={this.props.sideMenuOpen}/> }    
     </div>
 		)
 	}

@@ -1,19 +1,6 @@
-import React, {Component} from 'react'
-import LogInForm from '../LogIn/LogInForm.js'
+import HomePageComponent from '../../../../components/LoggedOut/HomePage'
+import {connect} from 'react-redux'
 
-class Home extends Component {
-	render(){
-		return (
-		<div className="home-container">
-			<h1>
-				Welcome to the Home Page
-			</h1>
-			<h3>Feel free to Login here</h3>
-			<LogInForm/>
+const HomePage = HomePageComponent
+export default HomePage
 
-		</div>
-		)
-	}
-}
-
-export default Home

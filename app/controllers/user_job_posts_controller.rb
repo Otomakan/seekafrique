@@ -1,10 +1,24 @@
 class UserJobPostsController < UserApiController
 	def showallposts
 		allPost = []
+		# IN the controller we create a custom hash including the company name and whether the applicant applied, saved or not
 		JobPost.all.each do|jp|
+			if @current_user.applications.where(jobPost_id:jp).exists?
+				applied = true
+			else
+				applied = false
+			end
+			saved = false
+			@current_user.savedPosts.each do |sp|
+				if sp == jp
+					saved = true
+				end	
+			end
 			companyName = jp.company.companyName
 			jp = Hash[jp.attributes]
 			jp[:companyName] = companyName
+			jp[:saved] = saved
+			jp[:applied] = applied
 			allPost.push(jp)
 		end
 		render json: {allJobPosts: allPost}, status:200
@@ -45,7 +59,10 @@ class UserJobPostsController < UserApiController
 
 	def applytojob
 		puts application_params
-		@application = Application.new(
+		if @current_user.applications.find_by(jobPost_id:application_params['jobPostId'])
+			render json:{errors:'Already Applied to Job'}, status: 401
+		else
+			@application = Application.new(
 			coverLetter:application_params['coverLetter'], 
 			user:@current_user, 
 			jobPost: JobPost.find(application_params['jobPostId']),
@@ -56,6 +73,8 @@ class UserJobPostsController < UserApiController
 			render json:{errors:@application.errors.messages},status:400
 		end
 		puts @application.errors.messages
+		end
+		
 	end
 	
 	private

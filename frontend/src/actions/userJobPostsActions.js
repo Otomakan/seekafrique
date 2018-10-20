@@ -26,7 +26,7 @@ export const userJobPostsConstants = {
     UPLOAD_APPLICATION_REQUEST: "UPLOAD_APPLICATION_REQUEST",
     UPLOAD_APPLICATION_SUCCESS: "UPLOAD_APPLICATION_SUCCESS",
     UPLOAD_APPLICATION_FAILURE: "UPLOAD_APPLICATION_FAILURE",
-
+    UPLOAD_APPLICATION_RESET: "UPLOAD_APPLICATION_RESET",
     CHANGE_APPLICATION_STATE:"CHANGE_APPLICATION_STATE",
 }
 
@@ -37,20 +37,21 @@ const userJobPostsActions = {
 	getSavedPosts,
     handleApplicationStateChange,
     uploadApplication,
+    uploadApplicationReset,
     showAllOwnApplications
 }
 
 export default userJobPostsActions
 
 
-function savePost(postId){
+function savePost(postId,key){
 	return dispatch=>{
         dispatch(request())
 		userServices.savePost(postId)
 		.then(
             res=>{
             	console.log(res)
-                dispatch(success())
+                dispatch(success(key))
             })
         .catch(
             err=>{
@@ -70,18 +71,18 @@ function savePost(postId){
             )
 	}
 	function request(){ return { type: userJobPostsConstants.SAVE_JOB_POST_REQUEST}}
-    function success(allJobPosts){ return { type: userJobPostsConstants.SAVE_JOB_POST_SUCCESS}}
+    function success(key){ return { type: userJobPostsConstants.SAVE_JOB_POST_SUCCESS,key}}
     function failure(err){ return { type: userJobPostsConstants.SAVE_JOB_POST_FAILURE, err}}	
 }
 
-function unsavePost(postId){
+function unsavePost(postId,key){
     return dispatch=>{
+        console.log()
         dispatch(request())
         userServices.unsavePost(postId)
         .then(
             res=>{
-                dispatch(success())   
-                dispatch(getSavedPosts())
+                dispatch(success(key))   
             })
         .catch(
             err=>{
@@ -101,7 +102,7 @@ function unsavePost(postId){
             )
     }
     function request(){ return { type: userJobPostsConstants.UNSAVE_JOB_POST_REQUEST}}
-    function success(allJobPosts){ return { type: userJobPostsConstants.UNSAVE_JOB_POST_SUCCESS}}
+    function success(key){ return { type: userJobPostsConstants.UNSAVE_JOB_POST_SUCCESS,key}}
     function failure(err){ return { type: userJobPostsConstants.UNSAVE_JOB_POST_FAILURE, err}}    
 }
 
@@ -182,8 +183,8 @@ function uploadApplication(jobApplication){
                 if(typeof err.then === "function")
                     err.then(err=>{
                         //API returns an object which wewant to convert to an array so we can better display errors
-                        var errarray = Object.keys(err.error).reduce((prev, curr,index)=>{
-                            prev.push(err.error[curr])
+                        var errarray = Object.keys(err.errors).reduce((prev, curr,index)=>{
+                            prev.push(err.errors[curr])
                             return prev
                         },[])
                         dispatch(failure(errarray))
@@ -221,7 +222,7 @@ function showAllOwnApplications(){
                 if(typeof err.then === "function")
                     err.then(err=>{
                         //API returns an object which wewant to convert to an array so we can better display errors
-                        var errarray = Object.keys(err.error).reduce((prev, curr,index)=>{
+                        var errarray = Object.keys(err.errors).reduce((prev, curr,index)=>{
                             prev.push(err.error[curr])
                             return prev
                         },[])
@@ -236,4 +237,10 @@ function showAllOwnApplications(){
     function success(allOwnApplications){ return { type: userJobPostsConstants.SHOW_ALL_APPLICATIONS_SUCCESS, allOwnApplications}}
     function failure(err){ return { type: userJobPostsConstants.SHOW_ALL_APPLICATIONS_FAILURE, err}} 
 
+}
+
+function uploadApplicationReset(){
+    return dispatch=>{
+        dispatch({type:userJobPostsConstants.UPLOAD_APPLICATION_RESET})
+    }
 }
