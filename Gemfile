@@ -14,8 +14,7 @@ gem 'puma', '~> 3.11'
 #CORS 
 gem 'rack-cors', require: 'rack/cors'
 #Mongo db and mongoid
-gem 'mongo', '~> 2.2', '>= 2.2.5'
-gem 'mongoid', '~> 7.0'
+gem 'pg', '~> 0.18'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 #JWT Tokens Generation

@@ -22,5 +22,4 @@ function signup(state={loggedIn:false, signUpErrors:[]}, action){
 		default:
 		return {...state}
 	}
-
 }
